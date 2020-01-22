@@ -33,7 +33,7 @@ func init() {
 func loadApiKey() {
 	pwd, _ := os.Getwd()
 	// this points to the app folder.
-	file, err := os.Open(pwd + "/../apiKey")
+	file, err := os.Open(pwd + "/apiKey")
 	if err != nil {
 		log.Fatal(err)
 	}

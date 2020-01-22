@@ -2,16 +2,14 @@
 
 It is written using Revel, a high-productivity web framework for the [Go language](http://www.golang.org/).
 
-### To use this, you have to get an API key from [The Movie Database](www.themoviedb.org), and save it in the app/apikey file.
+### To use this, you have to get an API key from [The Movie Database](https://themoviedb.org), and save it in the app/apikey file.
 
 
 ### Start the web server:
 
    revel run myapp
 
-### Go to http://localhost:9000/ and you'll see:
-
-    "It works"
+### Go to http://localhost:9000/
 
 ## Code Layout
 

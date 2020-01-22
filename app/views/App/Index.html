@@ -1,0 +1,25 @@
+{{set . "title" "Search for movies of an actor"}}
+{{template "header.html" .}}
+
+<!--<header class="jumbotron" style="background-color:#A9F16C">
+  <div class="container">
+    <div class="row">
+      <h1>It works!</h1>
+      <p></p>
+    </div>
+  </div>
+</header>-->
+
+<h1>List all movies of an actor ordered by rating.</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="span6">
+      {{template "flash.html" .}}
+    </div>
+  </div>
+</div>
+
+{{template "App/SearchForm.html" .}}
+
+{{template "footer.html" .}}

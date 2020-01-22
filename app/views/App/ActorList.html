@@ -1,0 +1,42 @@
+{{$title:= printf "%s%s%s" "Actors found for '" .term "'"}}
+{{set . "title" $title}}
+
+{{template "header.html" .}}
+
+{{template "App/SearchForm.html" .}}
+<br/>
+
+{{if .results}}
+<table class="table table-striped table-bordered table-hover" style="max-width:600px">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Photo</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{range .results}}
+        <tr>
+            <td><a href="/App/Movies?actor={{.id}}">{{.name}}</a></td>
+            <td>
+                {{if .profile_path}}
+                <a href="/App/Movies?actor={{.id}}">
+                    <img src="https://image.tmdb.org/t/p/w185{{.profile_path}}" />
+                </a>
+                {{end}}
+            </td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>
+<!--<p>
+    <a id="nextPage" href="{{.nextPage}}">More results</a>
+</p>-->
+
+{{else}}
+<p>
+    No results
+</p>
+{{end}}
+
+{{template "footer.html" .}}

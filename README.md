@@ -7,7 +7,7 @@ It is written using Revel, a high-productivity web framework for the [Go languag
 
 ### Start the web server:
 
-   revel run myapp
+   revel run movies-of
 
 ### Go to http://localhost:9000/
 

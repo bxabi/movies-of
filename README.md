@@ -1,6 +1,8 @@
-# Welcome to Revel
+# This project serves a web page where you can list the movies of an actor sorted by rating.
 
-A high-productivity web framework for the [Go language](http://www.golang.org/).
+It is written using Revel, a high-productivity web framework for the [Go language](http://www.golang.org/).
+
+### To use this, you have to get an API key from [The Movie Database](www.themoviedb.org), and save it in the app/apikey file.
 
 
 ### Start the web server:

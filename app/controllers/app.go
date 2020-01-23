@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"path"
+	"runtime"
 	"sort"
 
 	"github.com/revel/revel"
@@ -31,9 +33,9 @@ func init() {
 }
 
 func loadApiKey() {
-	pwd, _ := os.Getwd()
-	// this points to the app folder.
-	file, err := os.Open(pwd + "/apiKey")
+	_, currentFile, _, _ := runtime.Caller(1)
+	apiKeyFile := path.Join(path.Dir(currentFile), "../../apiKey")
+	file, err := os.Open(apiKeyFile)
 	if err != nil {
 		log.Fatal(err)
 	}

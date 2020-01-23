@@ -2,17 +2,17 @@
 
 It is written using Revel, a high-productivity web framework for the [Go language](http://www.golang.org/).
 
-### To use this, you have to get an API key from [The Movie Database](https://themoviedb.org), and save it in a file called 'apiKey' in the movies-of folder.
+### To use this, you have to get an API key from [The Movie Database](https://themoviedb.org), and save it in a file called 'apiKey' in this folder.
 
 ### Install Revel: 
     
     go get github.com/revel/revel
     go get github.com/revel/cmd/revel
 
-
 ### Start the web server:
 
-   revel run movies-of
+   revel run movies-of \[prod\]
+   (~/go/bin/revel if you don't want to add revel to your path)
 
 ### Go to http://localhost:9000/
 

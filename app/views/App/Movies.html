@@ -37,7 +37,11 @@
                 <img src="https://image.tmdb.org/t/p/w154{{.Poster_path}}" /></td>
                 {{end}}
             <td>
-                {{range $index, $value:= .Genre_ids}}{{ if $index }}, {{ end }}{{index $genres $value}}{{end}}
+                {{range $index, $value:= .Genre_ids -}}
+                    {{- if $index }}, {{end -}}
+                    {{- $genrename:=index $genres $value -}}
+                    {{- if $genrename}}{{$genrename}}{{else}}_{{end -}}
+                {{- end}}
             </td>
 
             <td>{{.Character}}</td>

@@ -1,8 +1,10 @@
 # This project serves a web page where you can list the movies of an actor sorted by rating.
 
+# [Try it out live at](https://movies-of.bxabi.com)
+
 It is written using Revel, a high-productivity web framework for the [Go language](http://www.golang.org/).
 
-### To use this, you have to get an API key from [The Movie Database](https://themoviedb.org), and save it in a file called 'apiKey' in this folder.
+### To use it, you have to get an API key from [The Movie Database](https://themoviedb.org), and save it in a file called 'apiKey' in this folder.
 
 ### Install Revel: 
     

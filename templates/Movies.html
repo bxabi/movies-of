@@ -1,12 +1,11 @@
-{{set . "title" "Movies of the actor"}}
 {{template "header.html" .}}
 
-{{template "App/SearchForm.html" .}}
+{{template "SearchForm.html" .}}
 <br/>
 
-{{$genres := .genres}}
+{{$genres := .Data.Genres}}
 
-{{if .cast}}
+{{if .Data.Cast}}
 <table class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
@@ -22,7 +21,7 @@
         </tr>
     </thead>
     <tbody>
-        {{range .cast}}
+        {{range .Data.Cast}}
         <tr>
             <td>{{.Media_type}}</td>
             {{if .Title}}
@@ -46,7 +45,7 @@
 
             <td>{{.Character}}</td>
             <td>{{.Overview}}</td>
-            <td><a href="/App/External?id={{.Id}}" target="_blank">IMDB</a></td>
+            <td><a href="/external?id={{.Id}}&type={{.Media_type}}" target="_blank">IMDB</a></td>
         </tr>
         {{end}}
     </tbody>

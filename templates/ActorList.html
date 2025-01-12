@@ -1,12 +1,9 @@
-{{$title:= printf "%s%s%s" "Actors found for '" .term "'"}}
-{{set . "title" $title}}
-
 {{template "header.html" .}}
 
-{{template "App/SearchForm.html" .}}
+{{template "SearchForm.html" .}}
 <br/>
 
-{{if .results}}
+{{if .Data}}
 <table class="table table-striped table-bordered table-hover" style="max-width:600px">
     <thead>
         <tr>
@@ -15,13 +12,13 @@
         </tr>
     </thead>
     <tbody>
-        {{range .results}}
+        {{range .Data}}
         <tr>
-            <td><a href="/App/Movies?actor={{.id}}">{{.name}}</a></td>
+            <td><a href="/movies?actor={{.ID}}">{{.Name}}</a></td>
             <td>
-                {{if .profile_path}}
-                <a href="/App/Movies?actor={{.id}}">
-                    <img src="https://image.tmdb.org/t/p/w185{{.profile_path}}" />
+                {{if .ProfilePath}}
+                <a href="/movies?actor={{.ID}}">
+                    <img src="https://image.tmdb.org/t/p/w185{{.ProfilePath}}" />
                 </a>
                 {{end}}
             </td>

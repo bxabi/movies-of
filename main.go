@@ -66,5 +66,5 @@ func main() {
 	http.HandleFunc("/search", handleSearch)
 	http.HandleFunc("/movies", handleMovies)
 	http.HandleFunc("/external", handleExternal)
-	log.Fatal(http.ListenAndServe(":9000", nil))
+	log.Fatal(http.ListenAndServe("localhost:9000", nil))
 }

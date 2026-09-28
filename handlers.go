@@ -5,10 +5,12 @@ import (
 	"net/http"
 	"net/url"
 	"sort"
+	"strconv"
 )
 
 type Page struct {
-	Data interface{}
+	Data     interface{}
+	NextPage string
 }
 
 type Actor struct {
@@ -29,16 +31,23 @@ func handleIndex(w http.ResponseWriter, r *http.Request) {
 }
 
 type SearchResponse struct {
-	Actors []Actor `json:"results"`
+	Page       int     `json:"page"`
+	TotalPages int     `json:"total_pages"`
+	Actors     []Actor `json:"results"`
 }
 
 func handleSearch(w http.ResponseWriter, r *http.Request) {
 	term := r.URL.Query().Get("term")
+	page := r.URL.Query().Get("page")
+	if page == "" {
+		page = "1"
+	}
 
-	u, _ := url.Parse("https://api.themoviedb.org/3/search/person?page=1&include_adult=false&language=en-US")
+	u, _ := url.Parse("https://api.themoviedb.org/3/search/person?include_adult=false&language=en-US")
 	q := u.Query()
 	q.Add("api_key", apiKey)
 	q.Add("query", term)
+	q.Add("page", page)
 	u.RawQuery = q.Encode()
 
 	resp, err := http.Get(u.String())
@@ -51,8 +60,17 @@ func handleSearch(w http.ResponseWriter, r *http.Request) {
 	var result SearchResponse
 	json.NewDecoder(resp.Body).Decode(&result)
 
+	var nextPage string
+	if result.Page > 0 && result.Page < result.TotalPages {
+		next := url.Values{}
+		next.Set("term", term)
+		next.Set("page", strconv.Itoa(result.Page+1))
+		nextPage = "/search?" + next.Encode()
+	}
+
 	renderTemplate(w, "ActorList", &Page{
-		Data: result.Actors,
+		Data:     result.Actors,
+		NextPage: nextPage,
 	})
 }
 

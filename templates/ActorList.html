@@ -26,9 +26,11 @@
         {{end}}
     </tbody>
 </table>
-<!--<p>
-    <a id="nextPage" href="{{.nextPage}}">More results</a>
-</p>-->
+{{if .NextPage}}
+<p>
+    <a id="nextPage" href="{{.NextPage}}">More results</a>
+</p>
+{{end}}
 
 {{else}}
 <p>

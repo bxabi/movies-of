@@ -8,8 +8,6 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"path"
-	"runtime"
 )
 
 var templates = template.Must(template.ParseGlob("templates/*.html"))
@@ -22,9 +20,7 @@ func init() {
 }
 
 func loadApiKey() {
-	_, currentFile, _, _ := runtime.Caller(1)
-	apiKeyFile := path.Join(path.Dir(currentFile), "apiKey")
-	file, err := os.Open(apiKeyFile)
+	file, err := os.Open("apiKey")
 	if err != nil {
 		log.Fatal(err)
 	}
